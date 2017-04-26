@@ -1,0 +1,73 @@
+package com.demo.test;
+
+
+/**
+ * 吸血鬼数字(头一次听说)
+ * @author fzy
+ * @createTime 2017年4月25日
+ */
+public class VamprieFigures {
+	public static void printInfo(String s1,String s2,String s3){
+		System.out.println(s2+s3);
+		System.out.println(s1);
+		System.out.println((s1).contains(s2+s3));
+		if((s1).contains(s2+s3)&&s1.length()==4){
+			System.out.println("s1=="+s1);
+			System.out.println("s2=="+s2);
+			System.out.println("s3=="+s3);
+		}
+	}
+	
+	
+	public static boolean compare(String s1,String s2,String s3){
+		String s=s2+s3;
+		return compare2(s1, s);
+	}
+	
+	/**
+	 * 判断两个字符串的元素是否相同
+	 * @param a
+	 * @param b
+	 * @return
+	 */
+    public static boolean compare2(String a,String b){  
+        byte[] b1 = a.getBytes();  
+        byte[] b2 = b.getBytes();  
+        int[] bCount = new int[256];  
+        for(int i=0;i<256;i++){  
+            bCount[i] = 0;  
+        }  
+        for(int i=0;i<b1.length;i++){
+        	System.out.println(b1[i]-'0');
+            bCount[b1[i]-'0']++;  	
+            System.out.println(bCount[b1[i]-'0']);
+        }
+        	
+        for(int i=0;i<b2.length;i++)  
+            bCount[b2[i]-'0']--;  
+        for(int i=0;i<256;i++){
+            if(bCount[i]!=0)  
+                return false;
+        }  
+        return true;  
+    }  
+	
+	public static void main(String[] args) {
+		/*for(int i=10;i<100;i++){
+			for(int j=10;j<100;j++){
+				int m=i*j;
+				String a=new Integer(m).toString();
+				String s2=new Integer(i).toString();
+				String s3=new Integer(j).toString();
+				String b=s2+s3;
+				if(compare2(a,b)){
+					System.out.println(i+" "+j+" "+m);
+				}
+			}
+		}*/
+		String s="1260";
+		String b="2160";
+		compare2(s, b);
+	}
+
+}
